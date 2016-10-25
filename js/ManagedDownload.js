@@ -20,6 +20,23 @@
 	});
 	MANAGEDDOWNLOAD.states=DOWNLOAD.states;
 
+	MANAGEDDOWNLOAD.ManagedPackate=µ.Class(DOWNLOAD,{
+		objectType:"Package",
+		init:function(param,appOrigin)
+		{
+			param=param||{};
+
+			this.mega(param);
+
+			this.appOrigin=appOrigin;
+
+		},
+		update:function(param)
+		{
+
+		}
+	});
+
 	SMOD("ManagedDownload",MANAGEDDOWNLOAD);
 	if(typeof module!=="undefined")module.exports=MANAGEDDOWNLOAD;
 

@@ -6,9 +6,9 @@ module.exports=worker.configManager({
 		step:1,
 		default:3
 	},
-	
+
 	"initial start":{
 		type:"boolean",
 		default:false
 	}
-})
+});
