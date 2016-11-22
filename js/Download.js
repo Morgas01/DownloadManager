@@ -18,20 +18,21 @@
 			this.addField("name",		FIELD.TYPES.STRING	,param.name);
 			this.addField("filename",	FIELD.TYPES.STRING	,param.filename);
 			this.addField("size",		FIELD.TYPES.INT		,param.size);
-			this.addField("filesize",	FIELD.TYPES.INT		,param.size);
+			this.addField("filesize",	FIELD.TYPES.INT		,param.filesize);
 			this.addField("state",		FIELD.TYPES.STRING	,param.state||DOWNLOAD.states.PENDING);
 			this.addField("message",	FIELD.TYPES.JSON	,param.message);
 
-			this.addRelation("package",DOWNLOAD.Package,SC.rel.TYPES.PARENT,"children","package");
+			this.addField("packageID",	FIELD.TYPES.INT		,param.packageID);
+			this.addRelation("package",	DOWNLOAD.Package,SC.rel.TYPES.PARENT,"children","packageID");
 
 		}
 	});
 	DOWNLOAD.states={
-		DISABLED:"Disabled",
-		PENDING:"Pending",
-		RUNNING:"Running",
-		DONE:"Done",
-		FAILED:"Failed"
+		DISABLED:"disabled",
+		PENDING:"pending",
+		RUNNING:"running",
+		DONE:"done",
+		FAILED:"failed"
 	};
 
 	DOWNLOAD.Package=µ.Class(DBObj,{
@@ -44,7 +45,11 @@
 
 			this.addField("name",FIELD.TYPES.STRING,param.name);
 
-			this.addRelation("children",DOWNLOAD.Package,SC.rel.TYPES.CHILDREN,"package","children");
+			this.addRelation("children",DOWNLOAD.Package,SC.rel.TYPES.CHILDREN,"package");
+
+			this.addField("packageID",	FIELD.TYPES.INT		,param.packageID);
+			this.addRelation("package",		DOWNLOAD.Package,SC.rel.TYPES.PARENT,	"subPackages","packageID");
+			this.addRelation("subPackages",	DOWNLOAD.Package,SC.rel.TYPES.CHILDREN,	"package");
 
 		}
 	});
