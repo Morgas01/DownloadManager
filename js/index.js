@@ -18,7 +18,7 @@
 		configDiv.appendChild(SC.form(configData.description,configData.value));
 	})
 
-	configDiv.addEventListener("FormChange",function(event)
+	configDiv.addEventListener("formChange",function(event)
 	{
 		SC.rq({
 			url:"rest/config",
