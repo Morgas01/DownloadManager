@@ -1,4 +1,4 @@
-module.exports=worker.configManager({
+module.exports=µ.getModule("configManager")({
 
 	"maximum downloads":{
 		type:"number",
