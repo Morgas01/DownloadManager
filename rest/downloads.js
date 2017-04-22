@@ -63,16 +63,18 @@ var startDownloads=function()
 			var download=info.downloads[i];
 			if(download.state==Download.states.PENDING)
 			{
-				if(download.appOrigin==="DownloadManager")
-				{
-					//TOODO http download
-				}
-				else worker.feedback(download.appOrigin,{id:download.id,action:"start"});
+				worker.ask(download.appOrigin,"startDownload",download.id);
+				// TODO check accepance (with timeout till "state:running" update)
 			}
 			download.state=Download.states.RUNNING;
 			running++;
 		}
 	}
 };
+
+worker.startDownload=function(id,appOrigin)
+{
+	//TODO check start http download
+}
 
 //setInterval(function(){setState(!info.state)},1000);
