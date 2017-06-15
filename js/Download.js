@@ -23,7 +23,7 @@
 			this.addField("message",	FIELD.TYPES.JSON	,param.message);
 
 			this.addField("packageID",	FIELD.TYPES.INT		,param.packageID);
-			this.addRelation("package",	DOWNLOAD.Package,SC.rel.TYPES.PARENT,"children","packageID");
+			//this.addRelation("package",	DOWNLOAD.Package,SC.rel.TYPES.PARENT,"children","packageID");
 
 			Object.defineProperty(this,"formattedFilesize",{
 				configurable:false,
@@ -95,7 +95,7 @@
 
 			this.addRelation("children",DOWNLOAD.Package,SC.rel.TYPES.CHILDREN,"package","children");
 
-			this.addField("packageID",	FIELD.TYPES.INT		,param.packageID);
+			//this.addField("packageID",	FIELD.TYPES.INT		,param.packageID);
 			this.addRelation("package",		DOWNLOAD.Package,SC.rel.TYPES.PARENT,	"subPackages","packageID");
 			this.addRelation("subPackages",	DOWNLOAD.Package,SC.rel.TYPES.CHILDREN,	"package");
 		}
